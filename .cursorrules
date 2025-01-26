@@ -1,0 +1,165 @@
+# 과제 컨벤션
+
+과제 컨벤션은 과제를 수행하기 위한 일종의 과제 스타일 규약입니다.
+실제 미완성된 과제(코드)를 완성하는 것이 목적입니다.
+어떠한 부분이 미완성되있고, 어떻게 완성시켜야 하는지는 과제 링크를 통해서 확인하고, 완성시켜야 합니다.
+실제 어중이떠중이처럼 작업하면 안되고, 과제가 원하는 규칙과 목적을 철저하고 정확하게 완성하되, 코드의 가독성과 확장성을 고려해서 작업해야 합니다.
+예를 들어, 테스트 코드가 없는 경우에는 테스트 코드를 작성해야 합니다. 이 또한 과제 링크를 통해서 확인하고, 완성시켜야 합니다. 또, 공식 문서에서 제안하는 규칙이나 규약을 철저히 지키도록 해야 합니다.
+또한, 과제의 목적이 무엇인지 파악하고, 그 목적을 달성하기 위해서 코드를 작성해야 합니다. 이 또한 과제 링크를 통해서 확인하고, 완성시켜야 합니다.
+이러한 일련의 과정들을 디테일하고 상세하게 코드를 작성하되, 코드의 가독성과 확장성을 고려해서 작업해야 합니다. 또한, 코드를 왜 이렇게 짰고, 과제의 목적이
+무엇인지에 대한 설명도 덧붙입니다.
+
+# 테스트 컨벤션
+
+테스트 컨벤션은 테스트 코드를 작성하기 위한 일종의 테스트 스타일 규약입니다.
+컨벤션의 스택으로는, Jest, React Testing Library, Mocking을 사용해서 테스트 코드를 작성합니다.
+Jest는 테스트 프레임워크이고, React Testing Library는 테스트 라이브러리이고, Mocking은 모킹 라이브러리입니다.
+이와 같은 라이브러리를 사용해서 개발을 할 때에는, 공식 문서를 참고해서 작성해야 합니다. 특히, 공식 문서에서 제안하는 규칙이나 규약을 철저히 지키도록 해야 합니다.
+만약 기존에 작성된 코드가 있다면, 기존 코드를 참고해서 테스트 코드를 작성하면 됩니다. 이 또한 공식 문서에서의 제안을 철저히 지키도록 해야 합니다.
+
+
+# 코딩 컨벤션
+
+코딩 컨벤션은 읽고, 관리하기 쉬운 코드를 작성하기 위한 일종의 코딩 스타일 규약입니다.
+아래 나오는 내용들은 저희가 사용하는 코딩 컨벤션이고, 아웃풋을 추출할 때 해당 코딩 컨벤션을 잘 지켜주세요.
+
+내가 코드를 만들어달라고 할때는, 아래의 규칙을 일단 지켜줘
+
+1) 타입스크립트 최적화 -> 타입 명시화나 인터페이스, 타입 등, 추론을 최적화해서 구체적으로 작성법
+2) 성능 최적화 -> useCallback, useMemo, useEffect 등 성능 최적화 함수 사용 -> 여러 개의 useState를 하나의 객체로 
+통합 하는 드으이 상태 업데이트 등, 모든 면에서 최적화를 생각해서 작성해줘.
+3) 코드 구조 개선 -> 각종 varient를 상수로 분리하거나, JSDoc을 사용해서 컴포넌트와 인터페이스에 대한 문서화, 또 불필요한
+Import나 코드를 없애는 등의 전문적이고 깔끔한 코드의 구조를 생각해줘
+4) 스타일링 최적화 -> 인라인 스타일과 클래스네임을 분리하여 가독성을 향상시키고, 동적 스타일은 useMemo를 사용해서 최적화해줘.
+5) 접근성 개선 -> aria-label과 aria-live 속성 추가, 헤더 역할을 하는 요소에 role="heading" 추가, 클릭 가능한 요소에 role="button" 추가
+6) 상수 관리 -> 매직 넘버 제거 및 상수화, 애니메이션 관련 값들을 중앙 집중화, 애니메이션 관련 값들을 중앙 집중화
+7) Tailwind CSS 사용 시 주의사항 -> Tailwind CSS의 JIT 모드에서는 동적으로 생성된 클래스가 사전에 정의되어 있어야 하므로, 
+상수로 선언된 값을 사용하여 스타일을 적용하는 방식은 피하고, 직접 Tailwind CSS 유틸리티 클래스를 사용하는 것을 지향한다.
+
+## 외부 라이브러리
+
+라이브러리를 설치할 경우에는 Package Manager를 pnpm을 기반으로 사용합니다.
+
+## 폴더링
+App routing 방식을 차용합니다.
+라우터별 폴더링 방식을 차용합니다.
+
+- 라우터를 기능별로 폴더링합니다.
+- 기능 별로 나누어진 폴더에서 페이지들의 폴더를 각각 생성한 후에 해당 위치에 레이아웃 파일 및 공통 파일을 넣습니다.
+  예) /src/app/graph/page.tsx, /src/app/graph/components, /src/app/graph/styles
+- 프로젝트 전체에 필요한 컴포넌트나 styles, util, lib, hooks 파일은 src 폴더 최상단에 위치합니다.
+  예) /src/app, /src/components, /src/hooks, /src/lib
+- 프로젝트 전체에 사용되는 공통 컴포넌트는 /src/components/common에 위치합니다.
+- 라이브러리 관련 컴포넌트 및 함수는 /src/lib 폴더에 위치합니다.
+- API 호출 관련 함수나 외부 서비스와의 통신을 담당하는 코드/데이터 패칭 로직은 /src/services 폴더에 위치합니다.
+- 여러 곳에서 재사용 가능한 유틸리티 함수/날짜 포맷팅, 수학 연산 등의 헬퍼 함수 혹은 공통으로 사용되는 상수나 타입을 /src/utils 폴더에 위치합니다.
+
+## 타입스크립트
+
+- type과 interface를 명명할 때 Pascal Case를 사용합니다.
+- 객체 형태는 Interface를 사용하고 그 외는 type을 사용합니다.
+
+## 스타일링
+
+스타일링은 Tailwind을 사용합니다.
+
+- 클래스 순서는 레이아웃 -> 타이포그래피 -> 시각적 스타일 -> 기타 순으로 정렬합니다.
+  예) class="flex items-center p-4 text-lg font-bold text-blue-500 hover:bg-gray-100"
+- 반응형 클래스 순서는 아래 예시와 같습니다.
+  예) class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+- 상태 관련 클래스(hover, focus 등)는 일반 클래스 뒤에 배치합니다.
+  예) class="text-white bg-blue-500 hover:bg-blue-600 focus:ring-2"
+- 자주 사용하는 클래스 조합은 @apply 디렉티브를 사용하여 커스텀 클래스를 만듭니다.
+  예) @layer component { .btn-primary { @apply px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600;} }
+- 관련된 클래스들은 괄호로 그룹화하여 가독성을 향상시킵니다.
+  예) class="(flex items-center justify-between) (p-4 m-2) (text-lg font-bold)"
+- 조건부 클래스 적용을 위해 clsx나 classnames 같은 유틸리티 함수를 사용합니다.
+  예) <div className={clsx('base-class'), isActive && 'active_class', isDisabled && 'disabled-class')} />
+
+## 네이밍 컨벤션
+
+- 불필요한 줄임말을 사용하지 않고 명확한 네이밍을 사용합니다.
+- 변수는 기본적으로 카멜 케이스를 사용합니다.
+  예) isActive, myProfile
+- 상수는 영문 대문자 스네이크 케이스를 사용합니다.
+  예) SNAKE_CASE, TOTAL_MEMBER, LIMIT
+- 데이터가 boolean 타입일 경우 prefix로 is를 사용합니다.
+  예) isLoggedIn, isOpen
+- 변수에 할당되는 값이 배열일 경우 복수형 이름을 사용합니다
+  예) users, members
+- 컴포넌트 네이밍은 파스칼 케이스를 사용합니다.
+  예) function FuncName(){...}
+- 이벤트 핸들러는 props인 경우 on + 이벤트명, 함수인 경우 handle + 함수명(이벤트)을 사용합니다.
+  예) onSubmit, handleForm
+- 컴포넌트의 property는 camelCase를 사용합니다.
+  예) <Foo userName="1234" phoneNumber="14444" />
+
+## 컴포넌트 순서
+
+1. 변수를 가장 위에 선언합니다.
+2. 변수 중에서도 state를 상위에 둡니다.
+3. 그 다음 handler 등 함수를 선언합니다.
+4. 그 다음 useEffect를 선언합니다.
+5. 마지막으로 return을 선언합니다.
+
+## 주석 사용
+
+주석을 사용하는 경우 JSDoc 문법을 사용합니다.
+특히, 컴포넌트 및 훅 단위에는 반드시 파라미터에 대한 주석을 작성해주어야 합니다.
+
+- 변수 작성법
+
+```tsx
+/**
+ * 과일 타입
+ * @type {'Apple' | 'Banana' | 'Orange'}
+ */
+const fruit = 'Apple';
+```
+
+- 함수 작성법
+
+```tsx
+/**
+ * 토스트 메세지 띄우는 함수
+ * @param {object} props
+ * @param {string} props.message 토스트 메세지
+ */
+const onInitToast = ({ message }) => {
+  ...
+}
+```
+
+- 컴포넌트 및 훅 단위에는 반드시 파라미터에 대한 주석을 작성합니다.
+
+```tsx
+/**
+ * 컴포넌트명
+ * @param {object} props
+ * @param {string} props.foo foo에 대한 설명
+ * @param {number} props.bar bar에 대한 설명
+ */
+const Component = ({ foo, bar }) => {
+  return <div> ... </div>;
+};
+
+export default Component;
+```
+
+- 유틸 및 api 단위에는 함수별로 주석을 작성합니다.
+
+```tsx
+/**
+ * 덧셈 함수
+ * @param {number} a
+ * @param {number} b
+ */
+const add = (a, b) => a + b;
+
+/**
+ * 곱셈 함수
+ * @param {number} a
+ * @param {number} b
+ */
+const multiply = (a, b) => a * b;
+```
